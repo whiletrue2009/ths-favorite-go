@@ -76,6 +76,17 @@ ths login
 不破解、不绕过任何验证机制，不抓取他人数据。使用非官方客户端可能不符合同花顺用户协议，由此产生的账号
 风险（如限流、风控）由使用者自行承担；本工具不提供任何投资建议。请仅用于管理自己的账户数据。
 
+## 赞助
+
+如果这个工具帮到了你，欢迎请作者喝口水（一个 token 的钱 😄）：
+
+<p align="center">
+  <img src="docs/donate/alipay.jpg" width="240" alt="支付宝收款码" />
+</p>
+
+不赞助也完全没问题，用得开心就是最好的回报。
+
 ## 许可
 
-[Apache-2.0](LICENSE)。本项目是对同花顺客户端行为的独立观测实现.
+[Apache-2.0](LICENSE)。本项目是对同花顺客户端行为的独立观测实现，
+与 GPL 许可的 Python 参考项目（[sunnysab/ths-favorite](https://github.com/sunnysab/ths-favorite)）行为兼容但代码独立。
