@@ -78,13 +78,13 @@ ths login
 
 ## 赞助
 
-如果这个工具帮到了你，欢迎请作者喝口水（一个 token 的钱 😄）：
+如果你觉得好用那是 AI 的功劳，欢迎给作者支付宝赞助好买 token
 
 <p align="center">
   <img src="docs/donate/alipay.jpg" width="240" alt="支付宝收款码" />
 </p>
 
-不赞助也完全没问题，用得开心就是最好的回报。
+
 
 ## 许可
 
