@@ -16,7 +16,12 @@ if (-not $Asset) { Write-Error "未找到 windows/$Arch 的发布包"; exit 1 }
 $Tmp = New-Item -ItemType Directory -Force -Path (Join-Path $env:TEMP ([System.Guid]::NewGuid()))
 Write-Host ">> 下载 $($Asset.browser_download_url)"
 $ZipPath = Join-Path $Tmp "ths.zip"
-Invoke-WebRequest -Uri $Asset.browser_download_url -OutFile $ZipPath
+try {
+  Invoke-WebRequest -Uri $Asset.browser_download_url -OutFile $ZipPath -TimeoutSec 60
+} catch {
+  Write-Host ">> 直连失败，尝试镜像…"
+  Invoke-WebRequest -Uri "https://ghproxy.cn/$($Asset.browser_download_url)" -OutFile $ZipPath -TimeoutSec 120
+}
 Expand-Archive -Path $ZipPath -DestinationPath $Tmp -Force
 
 $BinDir = Join-Path $env:USERPROFILE ".local\bin"

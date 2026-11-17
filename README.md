@@ -22,6 +22,13 @@ macOS / Linux（终端）：
 curl -fsSL https://raw.githubusercontent.com/whiletrue2009/ths-favorite-go/main/install.sh | bash
 ```
 
+国内直连 GitHub 慢的话用镜像：
+
+```bash
+curl -fsSL https://cdn.jsdelivr.net/gh/whiletrue2009/ths-favorite-go@main/install.sh | bash
+```
+（安装脚本内置了下载失败自动切镜像的回退；或者直接找朋友要 zip 安装包解压也行）
+
 或者手动：到 [Releases](https://github.com/whiletrue2009/ths-favorite-go/releases) 下载对应平台的 zip 解压。
 Windows 遇到 SmartScreen → 「更多信息」→「仍要运行」。
 

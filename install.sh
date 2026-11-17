@@ -19,7 +19,10 @@ if [ -z "$URL" ]; then echo "未找到 ${OS}/${ARCH} 的发布包"; exit 1; fi
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 echo ">> 下载 $URL"
-curl -fsSL -o "$TMP/ths.zip" "$URL"
+if ! curl -fsSL --max-time 60 -o "$TMP/ths.zip" "$URL"; then
+  echo ">> 直连失败，尝试镜像…"
+  curl -fsSL --max-time 120 -o "$TMP/ths.zip" "https://ghproxy.cn/$URL"
+fi
 unzip -oq "$TMP/ths.zip" -d "$TMP"
 
 BIN_DIR="${HOME}/.local/bin"
