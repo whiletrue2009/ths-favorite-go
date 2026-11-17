@@ -78,5 +78,4 @@ ths login
 
 ## 许可
 
-[Apache-2.0](LICENSE)。本项目是对同花顺客户端行为的独立观测实现，
-与 GPL 许可的 Python 参考项目（[sunnysab/ths-favorite](https://github.com/sunnysab/ths-favorite)）行为兼容但代码独立。
+[Apache-2.0](LICENSE)。本项目是对同花顺客户端行为的独立观测实现.
