@@ -1,0 +1,45 @@
+version: 2
+
+project_name: ths
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: ths
+    main: .
+    binary: ths
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -X github.com/whiletrue2009/ths-favorite-go/internal/cliapp.Version={{.Version}}
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - id: ths
+    name_template: "ths_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    formats: [zip]
+    files:
+      - README.md
+      - AGENTS.md
+      - LICENSE
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^chore:"
+      - "^test:"

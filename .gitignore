@@ -1,0 +1,19 @@
+# Binaries
+/dist/
+/ths
+/ths.exe
+
+# Test
+*.test
+*.out
+coverage.txt
+
+# Editor
+.DS_Store
+.idea/
+.vscode/
+
+# Local state (never commit credentials or cookies)
+session.json
+credentials.json
+.env
