@@ -3,6 +3,7 @@ package session
 import (
 	"os"
 	"path/filepath"
+	"runtime"
 	"testing"
 	"time"
 
@@ -23,15 +24,17 @@ func TestSaveLoadRoundtrip(t *testing.T) {
 		t.Fatalf("Save 失败: %v", err)
 	}
 
-	// 权限校验（非 Windows）。
-	if info, err := os.Stat(path); err == nil {
-		if mode := info.Mode().Perm(); mode != 0o600 {
-			t.Errorf("文件权限 = %o, want 600", mode)
+	// 权限校验：Windows 无 POSIX 权限位，跳过。
+	if runtime.GOOS != "windows" {
+		if info, err := os.Stat(path); err == nil {
+			if mode := info.Mode().Perm(); mode != 0o600 {
+				t.Errorf("文件权限 = %o, want 600", mode)
+			}
 		}
-	}
-	if info, err := os.Stat(filepath.Dir(path)); err == nil {
-		if mode := info.Mode().Perm(); mode != 0o700 {
-			t.Errorf("目录权限 = %o, want 700", mode)
+		if info, err := os.Stat(filepath.Dir(path)); err == nil {
+			if mode := info.Mode().Perm(); mode != 0o700 {
+				t.Errorf("目录权限 = %o, want 700", mode)
+			}
 		}
 	}
 

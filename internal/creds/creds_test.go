@@ -4,6 +4,7 @@ import (
 	"errors"
 	"os"
 	"path/filepath"
+	"runtime"
 	"testing"
 )
 
@@ -24,9 +25,11 @@ func TestFileBackendRoundtrip(t *testing.T) {
 	if err := storage.Save(&Credentials{Username: "13800000000", Password: "pw"}); err != nil {
 		t.Fatalf("Save 失败: %v", err)
 	}
-	// 文件权限校验（非 Windows）。
-	if info, err := os.Stat(storage.fallbackPath); err == nil && info.Mode().Perm() != 0o600 {
-		t.Errorf("文件权限 = %o, want 600", info.Mode().Perm())
+	// 文件权限校验：Windows 无 POSIX 权限位，跳过。
+	if runtime.GOOS != "windows" {
+		if info, err := os.Stat(storage.fallbackPath); err == nil && info.Mode().Perm() != 0o600 {
+			t.Errorf("文件权限 = %o, want 600", info.Mode().Perm())
+		}
 	}
 	loaded, err := storage.Load()
 	if err != nil || loaded.Username != "13800000000" || loaded.Password != "pw" {

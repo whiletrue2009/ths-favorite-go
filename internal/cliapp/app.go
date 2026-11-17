@@ -42,6 +42,7 @@ func NewRootCommand() *cobra.Command {
 		newLogoutCommand(),
 		newDoctorCommand(),
 		newVersionCommand(),
+		newSkillCommand(),
 		newListCommand(),
 		newSelfCommand(),
 		newStockCommand(),
