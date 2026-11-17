@@ -6,8 +6,8 @@
 
 ## 项目
 
-Go 语言干净重写的同花顺自选股管理 CLI（`ths`）。参考行为来自协议逆向（见 `docs/protocol.md`），
-与 GPL 的 Python 参考实现（sunnysab/ths-favorite）保持**行为兼容但代码独立**，本仓库采用 Apache-2.0。
+Go 语言实现的同花顺自选股管理 CLI（`ths`）。协议行为依据见 `docs/protocol.md`（独立观测归纳），
+本仓库采用 Apache-2.0。
 
 ## 常用命令
 

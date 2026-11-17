@@ -88,4 +88,4 @@ ths login
 
 ## 许可
 
-[Apache-2.0](LICENSE)。本项目是对同花顺客户端行为的独立观测实现，
+[Apache-2.0](LICENSE)。本项目为独立实现。
